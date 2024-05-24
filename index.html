@@ -90,23 +90,25 @@
     </style>
 </head>
 <body>
-    <button id="help-button">Help</button>
-    <div id="help-box">
-        <p id="help-text">You're copper and tellurium</p>
-        <button onclick="closeHelp()">Close</button>
+    <div id="quiz-container">
+        <button id="help-button">Help</button>
+        <div id="help-box">
+            <p id="help-text">You're copper and tellurium</p>
+            <button onclick="closeHelp()">Close</button>
+        </div>
+        <div class="note">Only write the symbols</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Periodic_table_large.svg" alt="Periodic Table" width="400">
+        <div class="response-fields">
+            <input type="text" id="field1" placeholder="Element 1">
+            <input type="text" id="field2" placeholder="Element 2">
+        </div>
+        <button id="submit-button" onclick="checkAnswer()">Submit</button>
+        <div id="arrow">⬆️</div>
     </div>
-    <div class="note">which two elements of this periodic table represent you pretty girl?</div>
-    <img src="https://github.com/abdennouuuur/riddle/blob/main/PERIODIC%20TABLE.png?raw=true" alt="Periodic Table" width="400">
-    <div class="response-fields">
-        <input type="text" id="field1" placeholder="Element 1">
-        <input type="text" id="field2" placeholder="Element 2">
-    </div>
-    <button id="submit-button" onclick="checkAnswer()">Submit</button>
     <div id="result">
-        <img id="puppy" src="https://github.com/abdennouuuur/riddle/blob/main/kiss.gif?raw=true" 
+        <img id="puppy" src="https://www.rd.com/wp-content/uploads/2021/01/GettyImages-588935825.jpg" alt="Happy Puppy">
         <p>Yesss, because you're veeeeeery CuTe</p>
     </div>
-    <div id="arrow">⬆️</div>
 
     <script>
         let helpClickCount = 0;
@@ -124,6 +126,7 @@
             }
             document.getElementById('help-text').innerText = helpText;
             document.getElementById('help-box').style.display = 'block';
+            document.getElementById('arrow').style.display = 'none';
         });
 
         function closeHelp() {
@@ -134,9 +137,8 @@
             const field1 = document.getElementById('field1').value.trim();
             const field2 = document.getElementById('field2').value.trim();
             if (field1 === 'Cu' && field2 === 'Te') {
+                document.getElementById('quiz-container').style.display = 'none';
                 document.getElementById('result').style.display = 'block';
-                document.getElementById('puppy').style.display = 'block';
-                document.getElementById('arrow').style.display = 'none';
             } else {
                 shake();
                 document.getElementById('arrow').style.display = 'block';
